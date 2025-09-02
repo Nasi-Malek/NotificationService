@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "NotificationContracts";
+
+package notifications;
+
+message Activity {
+  string userId = 1;
+  string action = 2;
+  string source = 3;       
+  int64 timestampUnix = 4;  // Unix time seconds
+}
+
+message Ack {
+  string message = 1;
+}
+
+service Notifier {
+  rpc SubmitActivity (Activity) returns (Ack);
+}
